@@ -73,6 +73,9 @@ export function toEvent(value: ApiEvent): Event {
     .map((offer) => offer.is_free)
     .filter((flag) => typeof flag === "boolean");
   const isFree = knownPrices.length ? knownPrices.includes(true) : null;
+  const prices = offers
+    .map((offer) => plainText(localized(offer.price)))
+    .filter(Boolean);
   const statuses: Record<ApiEvent["event_status"], Event["status"]> = {
     EventScheduled: "scheduled",
     EventCancelled: "cancelled",
@@ -98,12 +101,13 @@ export function toEvent(value: ApiEvent): Event {
       ),
     ],
     isFree,
-    price: offers.map((offer) => localized(offer.price)).find(Boolean) ?? null,
+    price: prices.find((price) => !externalUrl(price)) ?? null,
     website:
       externalUrl(localized(value.info_url)) ??
       offers
         .map((offer) => externalUrl(localized(offer.info_url)))
         .find(Boolean) ??
+      prices.map(externalUrl).find(Boolean) ??
       null,
     status: statuses[value.event_status],
   };

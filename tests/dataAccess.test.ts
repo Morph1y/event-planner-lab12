@@ -267,3 +267,20 @@ test("shares cached query data for equivalent filters", async (t) => {
   assert.equal(requests, 1);
   assert.equal(first, second);
 });
+
+test("treats a ticket URL published as a price as a website link", () => {
+  const event = toEvent(
+    apiEventSchema.parse({
+      id: "event:ticket-link",
+      offers: [
+        {
+          is_free: false,
+          price: { en: "https://example.org/tickets" },
+        },
+      ],
+    }),
+  );
+  assert.equal(event.price, null);
+  assert.equal(event.website, "https://example.org/tickets");
+  assert.equal(event.isFree, false);
+});

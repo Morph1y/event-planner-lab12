@@ -15,6 +15,19 @@ body {
 }
 
 button,
+a,
+input,
+select,
+textarea {
+  -webkit-tap-highlight-color: transparent;
+}
+
+button:not(:disabled),
+select {
+  cursor: pointer;
+}
+
+button,
 input,
 select,
 textarea {
