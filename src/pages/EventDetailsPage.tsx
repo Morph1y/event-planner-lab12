@@ -16,6 +16,7 @@ import {
 } from "../utils/eventPresentation";
 import { EventPhoto } from "../components/events/EventPhoto";
 import { AsyncState } from "../components/ui/AsyncState";
+import { FavoriteButton } from "../components/planner/FavoriteButton";
 
 export function EventDetailsPage() {
   const { eventId = "" } = useParams();
@@ -94,6 +95,9 @@ export function EventDetailsPage() {
           className="rounded-3xl border border-stone-200 bg-white p-6"
         >
           <h2 className="mb-6 text-lg font-semibold">Деталі відвідування</h2>
+          <div className="mb-6">
+            <FavoriteButton id={event.id} title={event.title} />
+          </div>
           <dl className="space-y-6 text-sm">
             <div className="flex gap-3">
               <CalendarDays

@@ -7,13 +7,19 @@ import {
   eventTimeLabel,
 } from "../../utils/eventPresentation";
 import { EventPhoto } from "./EventPhoto";
+import { FavoriteButton } from "../planner/FavoriteButton";
 
 export function EventCard({ event }: { event: Event }) {
   const href = `/events/${encodeURIComponent(event.id)}`;
 
   return (
     <article className="group flex h-full flex-col overflow-hidden rounded-2xl border border-stone-200 bg-white transition-shadow hover:shadow-lg hover:shadow-stone-900/5">
-      <EventPhoto image={event.image} title={event.title} href={href} />
+      <div className="relative">
+        <EventPhoto image={event.image} title={event.title} href={href} />
+        <div className="absolute right-3 top-3">
+          <FavoriteButton id={event.id} title={event.title} compact />
+        </div>
+      </div>
       <div className="flex flex-1 flex-col p-5">
         <div className="mb-3 flex flex-wrap items-center gap-2">
           <span

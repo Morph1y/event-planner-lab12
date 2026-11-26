@@ -16,7 +16,14 @@ const dateTimeFormat = new Intl.DateTimeFormat("uk-UA", {
   timeZone: "Europe/Helsinki",
 });
 
-export function eventTimeLabel(event: Event, now = Date.now()): string {
+export function formatEventDateTime(isoDate: string): string {
+  return dateTimeFormat.format(new Date(isoDate));
+}
+
+export function eventTimeLabel(
+  event: Pick<Event, "startsAt" | "endsAt">,
+  now = Date.now(),
+): string {
   const start = event.startsAt ? new Date(event.startsAt) : null;
   const end = event.endsAt ? new Date(event.endsAt) : null;
   if (start && end && start.getTime() <= now && end.getTime() >= now) {
