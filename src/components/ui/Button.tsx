@@ -12,7 +12,7 @@ export function Button({
   const variantClass =
     variant === "primary"
       ? "border-orange-700 bg-orange-700 text-white hover:border-orange-800 hover:bg-orange-800"
-      : "border-stone-300 bg-white text-stone-800 hover:bg-stone-100";
+      : "border-line-strong bg-surface text-ink hover:bg-soft";
 
   return (
     <button

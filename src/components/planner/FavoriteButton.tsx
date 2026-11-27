@@ -32,7 +32,7 @@ export function FavoriteButton({
       aria-pressed={saved}
       aria-label={`${saved ? "Прибрати з обраного" : "Додати до обраного"}: ${title}`}
       onClick={() => mutation.mutate()}
-      className={`inline-flex min-h-11 items-center justify-center gap-2 rounded-full border border-stone-200 bg-white/95 text-sm font-semibold shadow-sm transition hover:border-orange-700 disabled:opacity-50 ${compact ? "size-11" : "w-full px-4 py-2.5"} ${saved ? "text-orange-700" : "text-stone-700"}`}
+      className={`inline-flex min-h-11 items-center justify-center gap-2 rounded-full border border-line bg-surface/95 text-sm font-semibold shadow-sm transition hover:border-orange-700 disabled:opacity-50 ${compact ? "size-11" : "w-full px-4 py-2.5"} ${saved ? "text-accent" : "text-muted"}`}
     >
       {mutation.isPending ? (
         <LoaderCircle className="size-5 animate-spin" aria-hidden="true" />

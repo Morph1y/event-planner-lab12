@@ -51,24 +51,24 @@ export function FavoritesPage() {
     <section>
       <div className="mb-9 flex flex-wrap items-end justify-between gap-4">
         <div>
-          <p className="mb-3 text-xs font-semibold uppercase tracking-[0.16em] text-orange-800">
+          <p className="mb-3 text-xs font-semibold uppercase tracking-[0.16em] text-accent">
             Твоя добірка
           </p>
           <h1 className="text-4xl font-semibold tracking-tight sm:text-5xl">
             Обрані події
           </h1>
         </div>
-        <p className="text-sm text-stone-500">{ids.length} збережених подій</p>
+        <p className="text-sm text-subtle">{ids.length} збережених подій</p>
       </div>
       {ids.length === 0 ? (
-        <div className="rounded-3xl border border-stone-200 bg-white px-6 py-14 text-center">
+        <div className="rounded-3xl border border-line bg-surface px-6 py-14 text-center">
           <Heart
-            className="mx-auto mb-5 size-10 text-orange-700"
+            className="mx-auto mb-5 size-10 text-accent"
             strokeWidth={1.5}
             aria-hidden="true"
           />
           <h2 className="text-xl font-semibold">Збережи те, що зацікавило</h2>
-          <p className="mx-auto mt-3 max-w-md text-sm leading-relaxed text-stone-600">
+          <p className="mx-auto mt-3 max-w-md text-sm leading-relaxed text-muted">
             Натисни сердечко біля події в каталозі — вона з’явиться тут.
           </p>
           <Link

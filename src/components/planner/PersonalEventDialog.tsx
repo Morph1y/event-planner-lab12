@@ -19,7 +19,7 @@ import { personalEventRepository } from "../../repositories/personalEventReposit
 import { usePlannerUi } from "../../stores/plannerUiStore";
 
 const inputClass =
-  "mt-2 min-h-11 w-full min-w-0 rounded-xl border border-stone-300 bg-white px-3 py-2.5 text-sm disabled:bg-stone-100";
+  "mt-2 min-h-11 w-full min-w-0 rounded-xl border border-line-strong bg-surface px-3 py-2.5 text-sm disabled:bg-soft";
 
 export function PersonalEventDialog({
   event,
@@ -105,7 +105,7 @@ export function PersonalEventDialog({
             {errors.title && (
               <p
                 id="personal-title-error"
-                className="mt-1 text-sm text-red-700"
+                className="mt-1 text-sm text-danger"
               >
                 {errors.title.message}
               </p>
@@ -129,7 +129,7 @@ export function PersonalEventDialog({
               {errors.startsAt && (
                 <p
                   id="personal-start-error"
-                  className="mt-1 text-sm text-red-700"
+                  className="mt-1 text-sm text-danger"
                 >
                   {errors.startsAt.message}
                 </p>
@@ -152,14 +152,14 @@ export function PersonalEventDialog({
               {errors.endsAt && (
                 <p
                   id="personal-end-error"
-                  className="mt-1 text-sm text-red-700"
+                  className="mt-1 text-sm text-danger"
                 >
                   {errors.endsAt.message}
                 </p>
               )}
             </div>
           </div>
-          <p id="personal-timezone" className="text-xs text-stone-500">
+          <p id="personal-timezone" className="text-xs text-subtle">
             Час твого пристрою ·{" "}
             {Intl.DateTimeFormat().resolvedOptions().timeZone}
           </p>
@@ -183,7 +183,7 @@ export function PersonalEventDialog({
             {errors.location && (
               <p
                 id="personal-location-error"
-                className="mt-1 text-sm text-red-700"
+                className="mt-1 text-sm text-danger"
               >
                 {errors.location.message}
               </p>
@@ -240,7 +240,7 @@ export function PersonalEventDialog({
                 {errors.price && (
                   <p
                     id="personal-price-error"
-                    className="mt-1 text-sm text-red-700"
+                    className="mt-1 text-sm text-danger"
                   >
                     {errors.price.message}
                   </p>
@@ -269,7 +269,7 @@ export function PersonalEventDialog({
             {errors.description && (
               <p
                 id="personal-description-error"
-                className="mt-1 text-sm text-red-700"
+                className="mt-1 text-sm text-danger"
               >
                 {errors.description.message}
               </p>
@@ -278,12 +278,12 @@ export function PersonalEventDialog({
           {mutation.isError && (
             <p
               role="alert"
-              className="rounded-xl bg-red-50 p-3 text-sm leading-relaxed text-red-800"
+              className="rounded-xl bg-danger-soft p-3 text-sm leading-relaxed text-danger"
             >
               {mutation.error.message}
             </p>
           )}
-          <div className="flex flex-wrap justify-end gap-3 border-t border-stone-200 pt-5">
+          <div className="flex flex-wrap justify-end gap-3 border-t border-line pt-5">
             <Button type="button" variant="secondary" onClick={onClose}>
               Скасувати
             </Button>

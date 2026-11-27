@@ -16,7 +16,7 @@ export function PlannerDialogs() {
   if (!event)
     return (
       <Modal title="Подія недоступна" onClose={close}>
-        <p className="mb-5 text-sm text-stone-600">Цю подію вже видалено.</p>
+        <p className="mb-5 text-sm text-muted">Цю подію вже видалено.</p>
         <Button onClick={close}>Закрити</Button>
       </Modal>
     );

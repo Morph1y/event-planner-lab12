@@ -46,29 +46,29 @@ export function VenueDetailsPage() {
     <article>
       <Link
         to="/events"
-        className="mb-7 inline-flex min-h-10 items-center gap-2 text-sm text-stone-600 hover:text-orange-800"
+        className="mb-7 inline-flex min-h-10 items-center gap-2 text-sm text-muted hover:text-accent"
       >
         <ArrowLeft className="size-4" aria-hidden="true" />
         До каталогу подій
       </Link>
-      <p className="mb-3 text-xs font-semibold uppercase tracking-[0.16em] text-orange-800">
+      <p className="mb-3 text-xs font-semibold uppercase tracking-[0.16em] text-accent">
         Локація
       </p>
       <h1 className="max-w-4xl text-3xl font-semibold leading-tight tracking-tight sm:text-5xl">
         {venue.name}
       </h1>
       <div className="mt-8 grid items-start gap-8 lg:grid-cols-[minmax(0,1fr)_340px]">
-        <p className="max-w-3xl whitespace-pre-line break-words text-base leading-relaxed text-stone-700">
+        <p className="max-w-3xl whitespace-pre-line break-words text-base leading-relaxed text-muted">
           {venue.description || "Опис локації поки відсутній."}
         </p>
         <aside
           aria-label="Контакти локації"
-          className="space-y-5 rounded-3xl border border-stone-200 bg-white p-6 text-sm"
+          className="space-y-5 rounded-3xl border border-line bg-surface p-6 text-sm"
         >
           <h2 className="text-lg font-semibold">Як знайти</h2>
           <p className="flex gap-3 leading-relaxed">
             <MapPin
-              className="mt-0.5 size-5 shrink-0 text-orange-700"
+              className="mt-0.5 size-5 shrink-0 text-accent"
               aria-hidden="true"
             />
             <span>
@@ -79,7 +79,7 @@ export function VenueDetailsPage() {
           {venue.phone && (
             <p className="flex gap-3 break-words">
               <Phone
-                className="size-5 shrink-0 text-orange-700"
+                className="size-5 shrink-0 text-accent"
                 aria-hidden="true"
               />
               <span>{venue.phone}</span>
@@ -88,7 +88,7 @@ export function VenueDetailsPage() {
           {venue.email && (
             <p className="flex min-w-0 gap-3">
               <Mail
-                className="size-5 shrink-0 text-orange-700"
+                className="size-5 shrink-0 text-accent"
                 aria-hidden="true"
               />
               <a
@@ -104,7 +104,7 @@ export function VenueDetailsPage() {
               href={mapUrl}
               target="_blank"
               rel="noreferrer"
-              className="flex min-h-11 items-center justify-center gap-2 rounded-xl border border-stone-300 px-3 py-2 font-semibold hover:bg-stone-50"
+              className="flex min-h-11 items-center justify-center gap-2 rounded-xl border border-line-strong px-3 py-2 font-semibold hover:bg-soft"
             >
               Відкрити на мапі
               <ArrowUpRight className="size-4" aria-hidden="true" />
@@ -115,7 +115,7 @@ export function VenueDetailsPage() {
               href={venue.website}
               target="_blank"
               rel="noreferrer"
-              className="flex min-h-11 items-center gap-2 text-stone-600 underline underline-offset-4"
+              className="flex min-h-11 items-center gap-2 text-muted underline underline-offset-4"
             >
               Сайт локації
               <ArrowUpRight className="size-4" aria-hidden="true" />
@@ -131,7 +131,7 @@ export function VenueDetailsPage() {
           {eventsQuery.data && eventsQuery.data.count > 6 && (
             <Link
               to={`/events?${eventFiltersToSearch({ venueId }).toString()}`}
-              className="inline-flex min-h-10 items-center gap-2 text-sm font-semibold text-orange-800"
+              className="inline-flex min-h-10 items-center gap-2 text-sm font-semibold text-accent"
             >
               Усі події локації
               <ArrowUpRight className="size-4" aria-hidden="true" />

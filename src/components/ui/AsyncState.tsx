@@ -37,15 +37,15 @@ export function AsyncState({
   return (
     <div
       role={kind === "error" ? "alert" : "status"}
-      className="flex min-h-64 flex-col items-center justify-center rounded-3xl border border-stone-200 bg-white px-6 py-10 text-center"
+      className="flex min-h-64 flex-col items-center justify-center rounded-3xl border border-line bg-surface px-6 py-10 text-center"
     >
       <Icon
         aria-hidden="true"
-        className={`mb-5 size-9 text-stone-400 ${kind === "loading" ? "animate-spin motion-reduce:animate-none" : ""}`}
+        className={`mb-5 size-9 text-subtle ${kind === "loading" ? "animate-spin motion-reduce:animate-none" : ""}`}
       />
       <h2 className="text-xl font-semibold">{title ?? defaultTitle}</h2>
       {message && (
-        <p className="mt-3 max-w-lg text-sm leading-relaxed text-stone-600">
+        <p className="mt-3 max-w-lg text-sm leading-relaxed text-muted">
           {message}
         </p>
       )}

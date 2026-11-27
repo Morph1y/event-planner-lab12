@@ -4,7 +4,7 @@ import { ArrowLeft } from "lucide-react";
 export function NotFoundPage() {
   return (
     <section className="py-16">
-      <p className="mb-4 text-sm font-semibold text-orange-800">404</p>
+      <p className="mb-4 text-sm font-semibold text-accent">404</p>
       <h1 className="text-4xl font-semibold tracking-tight">
         Сторінку не знайдено
       </h1>

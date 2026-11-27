@@ -1,12 +1,42 @@
+import { lazy } from "react";
 import { Navigate, Route, Routes } from "react-router";
 import { AppLayout } from "./layouts/AppLayout";
-import { EventsPage } from "./pages/EventsPage";
-import { EventDetailsPage } from "./pages/EventDetailsPage";
-import { VenueDetailsPage } from "./pages/VenueDetailsPage";
-import { NotFoundPage } from "./pages/NotFoundPage";
-import { FavoritesPage } from "./pages/FavoritesPage";
-import { MyEventsPage } from "./pages/MyEventsPage";
-import { PersonalEventDetailsPage } from "./pages/PersonalEventDetailsPage";
+
+const EventsPage = lazy(() =>
+  import("./pages/EventsPage").then((module) => ({
+    default: module.EventsPage,
+  })),
+);
+const EventDetailsPage = lazy(() =>
+  import("./pages/EventDetailsPage").then((module) => ({
+    default: module.EventDetailsPage,
+  })),
+);
+const VenueDetailsPage = lazy(() =>
+  import("./pages/VenueDetailsPage").then((module) => ({
+    default: module.VenueDetailsPage,
+  })),
+);
+const NotFoundPage = lazy(() =>
+  import("./pages/NotFoundPage").then((module) => ({
+    default: module.NotFoundPage,
+  })),
+);
+const FavoritesPage = lazy(() =>
+  import("./pages/FavoritesPage").then((module) => ({
+    default: module.FavoritesPage,
+  })),
+);
+const MyEventsPage = lazy(() =>
+  import("./pages/MyEventsPage").then((module) => ({
+    default: module.MyEventsPage,
+  })),
+);
+const PersonalEventDetailsPage = lazy(() =>
+  import("./pages/PersonalEventDetailsPage").then((module) => ({
+    default: module.PersonalEventDetailsPage,
+  })),
+);
 
 export default function App() {
   return (

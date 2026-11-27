@@ -41,7 +41,7 @@ export function EventsPage() {
     <section>
       <div className="mb-9 grid items-center gap-8 lg:grid-cols-[1.15fr_0.85fr]">
         <div className="py-4">
-          <p className="mb-4 text-xs font-semibold uppercase tracking-[0.18em] text-orange-800">
+          <p className="mb-4 text-xs font-semibold uppercase tracking-[0.18em] text-accent">
             Події Гельсінкі та регіону
           </p>
           <h1 className="max-w-2xl text-4xl font-semibold leading-[1.08] tracking-[-0.045em] sm:text-6xl">
@@ -49,14 +49,14 @@ export function EventsPage() {
             <br />
             для нових вражень.
           </h1>
-          <p className="mt-5 max-w-lg text-base leading-relaxed text-stone-600">
+          <p className="mt-5 max-w-lg text-base leading-relaxed text-muted">
             Виставки, музика та зустрічі.
             <br className="hidden sm:block" /> Обери подію, заради якої варто
             вийти з дому.
           </p>
         </div>
         {featured ? (
-          <div className="hidden overflow-hidden rounded-3xl border border-stone-200 bg-white lg:block">
+          <div className="hidden overflow-hidden rounded-3xl border border-line bg-surface lg:block">
             <EventPhoto
               image={featured.image}
               title={featured.title}
@@ -64,7 +64,7 @@ export function EventsPage() {
             />
             <Link
               to={`/events/${encodeURIComponent(featured.id)}`}
-              className="flex items-center justify-between gap-4 p-4 text-sm font-semibold hover:text-orange-800"
+              className="flex items-center justify-between gap-4 p-4 text-sm font-semibold hover:text-accent"
             >
               <span className="line-clamp-1">{featured.title}</span>
               <ArrowUpRight className="size-5 shrink-0" aria-hidden="true" />
@@ -73,19 +73,19 @@ export function EventsPage() {
         ) : (
           <div
             aria-hidden="true"
-            className="hidden aspect-[16/10] rounded-3xl bg-[#e6e9df] lg:block"
+            className="hidden aspect-[16/10] rounded-3xl bg-placeholder lg:block"
           />
         )}
       </div>
 
-      <div className="mb-7 rounded-2xl border border-stone-200 bg-white p-4 sm:p-5">
+      <div className="mb-7 rounded-2xl border border-line bg-surface p-4 sm:p-5">
         <div className="flex flex-col items-start gap-4 lg:flex-row">
           <EventSearch
             search={filters.search}
             onSearch={(search) => updateFilters({ search })}
           />
           <label className="flex w-full shrink-0 items-center gap-3 text-sm lg:w-auto">
-            <span className="text-stone-600">Сортувати</span>
+            <span className="text-muted">Сортувати</span>
             <select
               aria-label="Сортування подій"
               value={filters.sort}
@@ -94,7 +94,7 @@ export function EventsPage() {
                   sort: event.target.value as EventFilters["sort"],
                 })
               }
-              className="min-h-12 min-w-0 flex-1 rounded-xl border border-stone-300 bg-white px-3 py-2 lg:w-48"
+              className="min-h-12 min-w-0 flex-1 rounded-xl border border-line-strong bg-surface px-3 py-2 lg:w-48"
             >
               <option value="soonest">За початком ↑</option>
               <option value="latest">За початком ↓</option>
@@ -102,7 +102,7 @@ export function EventsPage() {
             </select>
           </label>
         </div>
-        <div className="mt-4 flex flex-wrap items-center gap-2 border-t border-stone-100 pt-4">
+        <div className="mt-4 flex flex-wrap items-center gap-2 border-t border-line pt-4">
           <div
             role="group"
             aria-label="Вартість подій"
@@ -114,7 +114,7 @@ export function EventsPage() {
                 type="button"
                 aria-pressed={filters.price === option.value}
                 onClick={() => updateFilters({ price: option.value })}
-                className={`min-h-10 rounded-full px-4 py-2 text-xs font-semibold transition ${filters.price === option.value ? "bg-stone-900 text-white" : "bg-stone-100 text-stone-600 hover:bg-stone-200"}`}
+                className={`min-h-10 rounded-full px-4 py-2 text-xs font-semibold transition ${filters.price === option.value ? "bg-stone-900 text-white" : "bg-soft text-muted hover:bg-hover"}`}
               >
                 {option.label}
               </button>
@@ -124,7 +124,7 @@ export function EventsPage() {
             <button
               type="button"
               onClick={resetFilters}
-              className="ml-auto min-h-10 px-2 text-xs text-stone-600 underline underline-offset-4"
+              className="ml-auto min-h-10 px-2 text-xs text-muted underline underline-offset-4"
             >
               Скинути фільтри
             </button>
@@ -141,7 +141,7 @@ export function EventsPage() {
                 ? "Події обраної локації"
                 : "Досліджуй події"}
           </h2>
-          <div className="flex items-center gap-3 text-xs text-stone-500">
+          <div className="flex items-center gap-3 text-xs text-subtle">
             {query.isFetching && !query.isPending && (
               <span role="status" className="flex items-center gap-1.5">
                 <LoaderCircle

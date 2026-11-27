@@ -35,13 +35,13 @@ export function MyEventsPage() {
     <section>
       <div className="mb-8 flex flex-wrap items-end justify-between gap-5">
         <div>
-          <p className="mb-3 text-xs font-semibold uppercase tracking-[0.16em] text-orange-800">
+          <p className="mb-3 text-xs font-semibold uppercase tracking-[0.16em] text-accent">
             Твої власні плани
           </p>
           <h1 className="text-4xl font-semibold tracking-tight sm:text-5xl">
             Мої події
           </h1>
-          <p className="mt-4 text-sm text-stone-600">
+          <p className="mt-4 text-sm text-muted">
             Зустрічі й події, які ти плануєш самостійно. Зберігаються в цьому
             браузері.
           </p>
@@ -52,14 +52,14 @@ export function MyEventsPage() {
         </Button>
       </div>
       {events.length === 0 ? (
-        <div className="rounded-3xl border border-stone-200 bg-white px-6 py-14 text-center">
+        <div className="rounded-3xl border border-line bg-surface px-6 py-14 text-center">
           <CalendarDays
-            className="mx-auto mb-5 size-10 text-orange-700"
+            className="mx-auto mb-5 size-10 text-accent"
             strokeWidth={1.5}
             aria-hidden="true"
           />
           <h2 className="text-xl font-semibold">Додай перший власний план</h2>
-          <p className="mx-auto mt-3 max-w-md text-sm leading-relaxed text-stone-600">
+          <p className="mx-auto mt-3 max-w-md text-sm leading-relaxed text-muted">
             Обери час і місце — зустріч із друзями чи невеликий концерт уже
             матимуть своє місце у твоїх планах.
           </p>
@@ -67,10 +67,10 @@ export function MyEventsPage() {
       ) : (
         <>
           <div className="mb-5 flex flex-wrap items-center justify-between gap-3">
-            <p className="text-sm text-stone-500">
+            <p className="text-sm text-subtle">
               {events.length} власних подій · час Гельсінкі
             </p>
-            <label className="flex items-center gap-3 text-sm text-stone-600">
+            <label className="flex items-center gap-3 text-sm text-muted">
               Порядок
               <select
                 aria-label="Порядок власних подій"
@@ -82,7 +82,7 @@ export function MyEventsPage() {
                       : new URLSearchParams(),
                   )
                 }
-                className="min-h-11 rounded-xl border border-stone-300 bg-white px-3 py-2"
+                className="min-h-11 rounded-xl border border-line-strong bg-surface px-3 py-2"
               >
                 <option value="soonest">За початком</option>
                 <option value="newest">Спочатку нові</option>
@@ -92,26 +92,26 @@ export function MyEventsPage() {
           <ul className="space-y-4">
             {visible.map((event) => (
               <li key={event.id}>
-                <article className="rounded-2xl border border-stone-200 bg-white p-5 sm:p-6">
+                <article className="rounded-2xl border border-line bg-surface p-5 sm:p-6">
                   <div className="flex flex-wrap items-start justify-between gap-4">
                     <div className="min-w-0 flex-1">
                       <div className="mb-3 flex flex-wrap items-center gap-3 text-xs">
-                        <span className="rounded-full bg-stone-100 px-3 py-1.5 text-stone-600">
+                        <span className="rounded-full bg-soft px-3 py-1.5 text-muted">
                           {personalCategoryLabels[event.category]}
                         </span>
-                        <span className="font-semibold text-emerald-700">
+                        <span className="font-semibold text-positive">
                           {personalPriceLabel(event.price)}
                         </span>
                       </div>
                       <h2 className="break-words text-xl font-semibold tracking-tight">
                         <Link
                           to={`/my-events/${encodeURIComponent(event.id)}`}
-                          className="hover:text-orange-800"
+                          className="hover:text-accent"
                         >
                           {event.title}
                         </Link>
                       </h2>
-                      <div className="mt-4 flex flex-wrap gap-x-6 gap-y-2 text-sm text-stone-600">
+                      <div className="mt-4 flex flex-wrap gap-x-6 gap-y-2 text-sm text-muted">
                         <p className="flex items-start gap-2">
                           <CalendarDays
                             className="mt-0.5 size-4 shrink-0"
@@ -133,7 +133,7 @@ export function MyEventsPage() {
                         type="button"
                         onClick={() => openEdit(event.id)}
                         aria-label={`Редагувати подію «${event.title}»`}
-                        className="inline-flex size-11 items-center justify-center rounded-xl border border-stone-200 text-stone-600 hover:bg-stone-100"
+                        className="inline-flex size-11 items-center justify-center rounded-xl border border-line text-muted hover:bg-soft"
                       >
                         <Pencil className="size-4" aria-hidden="true" />
                       </button>
@@ -141,14 +141,14 @@ export function MyEventsPage() {
                         type="button"
                         onClick={() => openDelete(event.id)}
                         aria-label={`Видалити подію «${event.title}»`}
-                        className="inline-flex size-11 items-center justify-center rounded-xl border border-stone-200 text-stone-600 hover:border-red-300 hover:text-red-700"
+                        className="inline-flex size-11 items-center justify-center rounded-xl border border-line text-muted hover:border-danger hover:text-danger"
                       >
                         <Trash2 className="size-4" aria-hidden="true" />
                       </button>
                       <Link
                         to={`/my-events/${encodeURIComponent(event.id)}`}
                         aria-label={`Деталі події «${event.title}»`}
-                        className="inline-flex size-11 items-center justify-center rounded-xl border border-stone-200 text-stone-600 hover:bg-stone-100"
+                        className="inline-flex size-11 items-center justify-center rounded-xl border border-line text-muted hover:bg-soft"
                       >
                         <ArrowUpRight className="size-4" aria-hidden="true" />
                       </Link>

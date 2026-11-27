@@ -34,11 +34,11 @@ export function DeletePersonalEventDialog({
 
   return (
     <Modal title="Видалити подію?" busy={mutation.isPending} onClose={onClose}>
-      <p className="break-words text-sm leading-relaxed text-stone-600">
+      <p className="break-words text-sm leading-relaxed text-muted">
         Подію «{event.title}» буде видалено з твоїх планів.
       </p>
       {mutation.isError && (
-        <p role="alert" className="mt-4 text-sm text-red-700">
+        <p role="alert" className="mt-4 text-sm text-danger">
           {mutation.error.message}
         </p>
       )}

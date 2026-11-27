@@ -41,7 +41,7 @@ export function EventSearch({
         <div className="relative min-w-0 flex-1">
           <Search
             aria-hidden="true"
-            className="absolute left-3.5 top-3.5 size-5 text-stone-400"
+            className="absolute left-3.5 top-3.5 size-5 text-subtle"
           />
           <input
             id="event-search"
@@ -50,7 +50,7 @@ export function EventSearch({
             aria-invalid={Boolean(errors.search)}
             aria-describedby={errors.search ? "event-search-error" : undefined}
             placeholder="Назва, тема або місце…"
-            className="min-h-12 w-full min-w-0 rounded-xl border border-stone-300 bg-white py-3 pl-11 pr-4 text-sm placeholder:text-stone-400"
+            className="min-h-12 w-full min-w-0 rounded-xl border border-line-strong bg-surface py-3 pl-11 pr-4 text-sm placeholder:text-subtle"
           />
         </div>
         <Button type="submit" className="min-h-12">
@@ -71,7 +71,7 @@ export function EventSearch({
         )}
       </div>
       {errors.search && (
-        <p id="event-search-error" className="mt-2 text-sm text-red-700">
+        <p id="event-search-error" className="mt-2 text-sm text-danger">
           {errors.search.message}
         </p>
       )}

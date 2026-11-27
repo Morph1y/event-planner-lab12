@@ -20,7 +20,7 @@ export function Pagination({
   return (
     <nav
       aria-label="Сторінки подій"
-      className="mt-10 flex flex-wrap items-center justify-between gap-4 border-t border-stone-300 pt-6"
+      className="mt-10 flex flex-wrap items-center justify-between gap-4 border-t border-line-strong pt-6"
     >
       <Button
         variant="secondary"
@@ -30,7 +30,7 @@ export function Pagination({
         <ArrowLeft className="size-4" aria-hidden="true" />
         <span>Назад</span>
       </Button>
-      <span aria-live="polite" className="text-sm text-stone-600">
+      <span aria-live="polite" className="text-sm text-muted">
         Сторінка {page} з {totalPages}
       </span>
       <Button

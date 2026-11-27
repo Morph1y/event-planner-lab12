@@ -1,14 +1,17 @@
 import { ArrowUpRight, MapPin } from "lucide-react";
-import { useLayoutEffect } from "react";
+import { Suspense, useLayoutEffect } from "react";
 import { NavLink, Link, Outlet, useLocation } from "react-router";
 import { usePlannerStore } from "../hooks/usePlannerStore";
 import { usePlannerUi } from "../stores/plannerUiStore";
 import { PlannerDialogs } from "../components/planner/PlannerDialogs";
 import { PlannerNotice } from "../components/planner/PlannerNotice";
 import { Button } from "../components/ui/Button";
+import { ThemeSelect } from "../components/ui/ThemeSelect";
+import { RouteBoundary } from "../components/ui/RouteBoundary";
+import { AsyncState } from "../components/ui/AsyncState";
 
 export function AppLayout() {
-  const { pathname } = useLocation();
+  const { pathname, search } = useLocation();
   const favoriteCount = usePlannerStore((state) => state.favoriteIds.length);
   const warning = usePlannerStore((state) => state.storageWarning);
   const reload = usePlannerStore((state) => state.reload);
@@ -33,7 +36,7 @@ export function AppLayout() {
       >
         Перейти до вмісту
       </a>
-      <header className="border-b border-stone-200 bg-[#f5f3ee]/95">
+      <header className="border-b border-line bg-canvas/95">
         <div className="mx-auto flex max-w-7xl flex-wrap items-center gap-x-10 gap-y-4 px-5 py-5 sm:px-8">
           <Link
             to="/events"
@@ -53,8 +56,8 @@ export function AppLayout() {
               to="/events"
               className={({ isActive }) =>
                 isActive
-                  ? "font-semibold text-orange-800"
-                  : "text-stone-600 hover:text-stone-900"
+                  ? "font-semibold text-accent"
+                  : "text-muted hover:text-ink"
               }
             >
               Події
@@ -63,15 +66,15 @@ export function AppLayout() {
               to="/favorites"
               className={({ isActive }) =>
                 isActive
-                  ? "font-semibold text-orange-800"
-                  : "text-stone-600 hover:text-stone-900"
+                  ? "font-semibold text-accent"
+                  : "text-muted hover:text-ink"
               }
             >
               Обране
               {favoriteCount > 0 && (
                 <span
                   aria-hidden="true"
-                  className="ml-1.5 rounded-full bg-orange-100 px-1.5 py-0.5 text-[10px] text-orange-800"
+                  className="ml-1.5 rounded-full bg-accent-soft px-1.5 py-0.5 text-[10px] text-accent"
                 >
                   {favoriteCount}
                 </span>
@@ -81,17 +84,20 @@ export function AppLayout() {
               to="/my-events"
               className={({ isActive }) =>
                 isActive
-                  ? "font-semibold text-orange-800"
-                  : "text-stone-600 hover:text-stone-900"
+                  ? "font-semibold text-accent"
+                  : "text-muted hover:text-ink"
               }
             >
               Мої події
             </NavLink>
           </nav>
-          <p className="ml-auto flex items-center gap-2 text-xs text-stone-600 sm:text-sm">
+          <p className="ml-auto hidden items-center gap-2 text-xs text-muted lg:flex">
             <MapPin className="size-4" aria-hidden="true" />
             Гельсінкі та поруч
           </p>
+          <div className="ml-auto lg:ml-0">
+            <ThemeSelect />
+          </div>
         </div>
       </header>
       <main
@@ -102,7 +108,7 @@ export function AppLayout() {
         {warning && (
           <div
             role="status"
-            className="mb-6 flex flex-wrap items-center justify-between gap-3 rounded-2xl border border-amber-300 bg-amber-50 p-4 text-sm text-amber-950"
+            className="mb-6 flex flex-wrap items-center justify-between gap-3 rounded-2xl border border-warning-line bg-warning-soft p-4 text-sm text-warning"
           >
             <p className="max-w-2xl leading-relaxed">{warning}</p>
             <Button variant="secondary" onClick={reload}>
@@ -110,10 +116,18 @@ export function AppLayout() {
             </Button>
           </div>
         )}
-        <Outlet />
+        <RouteBoundary key={pathname + search}>
+          <Suspense
+            fallback={
+              <AsyncState kind="loading" message="Відкриваємо сторінку." />
+            }
+          >
+            <Outlet />
+          </Suspense>
+        </RouteBoundary>
       </main>
-      <footer className="mt-12 border-t border-stone-200">
-        <div className="mx-auto flex max-w-7xl flex-wrap items-center justify-between gap-4 px-5 py-7 text-xs text-stone-500 sm:px-8">
+      <footer className="mt-12 border-t border-line">
+        <div className="mx-auto flex max-w-7xl flex-wrap items-center justify-between gap-4 px-5 py-7 text-xs text-subtle sm:px-8">
           <span>Вихід · Event Planner</span>
           <a
             href="https://api.hel.fi/linkedevents/v1/"

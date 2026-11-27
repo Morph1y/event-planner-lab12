@@ -30,7 +30,7 @@ export function EventPhoto({
     <div
       role="img"
       aria-label={`Зображення для події «${title}» відсутнє`}
-      className="flex h-full items-center justify-center bg-[#e9ede5] text-[#8b9785]"
+      className="flex h-full items-center justify-center bg-placeholder text-[#8b9785]"
     >
       <CalendarDays className="size-14" aria-hidden="true" strokeWidth={1} />
     </div>
@@ -39,7 +39,7 @@ export function EventPhoto({
   return (
     <figure>
       <div
-        className={`overflow-hidden bg-stone-100 ${large ? "aspect-[16/9] rounded-3xl" : "aspect-[16/10] rounded-t-2xl"}`}
+        className={`overflow-hidden bg-soft ${large ? "aspect-[16/9] rounded-3xl" : "aspect-[16/10] rounded-t-2xl"}`}
       >
         {href ? (
           <Link
@@ -56,7 +56,7 @@ export function EventPhoto({
       </div>
       {available && (
         <figcaption
-          className={`flex flex-wrap items-center gap-x-2 gap-y-1 text-[11px] leading-relaxed text-stone-500 ${large ? "mt-2" : "px-4 pt-2"}`}
+          className={`flex flex-wrap items-center gap-x-2 gap-y-1 text-[11px] leading-relaxed text-subtle ${large ? "mt-2" : "px-4 pt-2"}`}
         >
           <span>Фото — {image.photographer || "Linked Events"}</span>
           {image.licenseUrl && (

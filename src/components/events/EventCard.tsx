@@ -13,7 +13,7 @@ export function EventCard({ event }: { event: Event }) {
   const href = `/events/${encodeURIComponent(event.id)}`;
 
   return (
-    <article className="group flex h-full flex-col overflow-hidden rounded-2xl border border-stone-200 bg-white transition-shadow hover:shadow-lg hover:shadow-stone-900/5">
+    <article className="group flex h-full flex-col overflow-hidden rounded-2xl border border-line bg-surface transition-shadow hover:shadow-lg hover:shadow-stone-900/5">
       <div className="relative">
         <EventPhoto image={event.image} title={event.title} href={href} />
         <div className="absolute right-3 top-3">
@@ -23,12 +23,12 @@ export function EventCard({ event }: { event: Event }) {
       <div className="flex flex-1 flex-col p-5">
         <div className="mb-3 flex flex-wrap items-center gap-2">
           <span
-            className={`text-xs font-semibold ${event.isFree ? "text-emerald-700" : "text-stone-600"}`}
+            className={`text-xs font-semibold ${event.isFree ? "text-positive" : "text-muted"}`}
           >
             {eventPriceLabel(event)}
           </span>
           {event.status !== "scheduled" && (
-            <span className="text-xs font-semibold text-orange-800">
+            <span className="text-xs font-semibold text-accent">
               {eventStatusLabels[event.status]}
             </span>
           )}
@@ -41,7 +41,7 @@ export function EventCard({ event }: { event: Event }) {
             {event.title}
           </Link>
         </h3>
-        <div className="mt-4 space-y-2 text-sm leading-relaxed text-stone-600">
+        <div className="mt-4 space-y-2 text-sm leading-relaxed text-muted">
           <p className="flex items-start gap-2">
             <CalendarDays
               className="mt-0.5 size-4 shrink-0"
@@ -57,7 +57,7 @@ export function EventCard({ event }: { event: Event }) {
           )}
         </div>
         {event.summary && (
-          <p className="mt-4 line-clamp-2 text-sm leading-relaxed text-stone-500">
+          <p className="mt-4 line-clamp-2 text-sm leading-relaxed text-subtle">
             {event.summary}
           </p>
         )}
@@ -66,7 +66,7 @@ export function EventCard({ event }: { event: Event }) {
             {event.keywords.slice(0, 2).map((keyword) => (
               <span
                 key={keyword}
-                className="max-w-40 truncate rounded-md bg-stone-100 px-2 py-1 text-[11px] text-stone-600"
+                className="max-w-40 truncate rounded-md bg-soft px-2 py-1 text-[11px] text-muted"
               >
                 {keyword}
               </span>
@@ -75,7 +75,7 @@ export function EventCard({ event }: { event: Event }) {
           <Link
             to={href}
             aria-label={`Деталі події «${event.title}»`}
-            className="inline-flex size-11 shrink-0 items-center justify-center rounded-full border border-stone-200 text-stone-700 transition group-hover:border-orange-600 group-hover:text-orange-700"
+            className="inline-flex size-11 shrink-0 items-center justify-center rounded-full border border-line text-muted transition group-hover:border-accent group-hover:text-accent"
           >
             <ArrowUpRight className="size-4" aria-hidden="true" />
           </Link>

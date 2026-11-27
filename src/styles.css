@@ -1,12 +1,74 @@
 @import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap");
 @import "tailwindcss";
 
+@theme inline {
+  --color-canvas: var(--canvas);
+  --color-surface: var(--surface);
+  --color-soft: var(--soft);
+  --color-hover: var(--hover);
+  --color-ink: var(--ink);
+  --color-muted: var(--muted);
+  --color-subtle: var(--subtle);
+  --color-line: var(--line);
+  --color-line-strong: var(--line-strong);
+  --color-accent: var(--accent);
+  --color-accent-soft: var(--accent-soft);
+  --color-positive: var(--positive);
+  --color-danger: var(--danger);
+  --color-danger-soft: var(--danger-soft);
+  --color-warning: var(--warning);
+  --color-warning-soft: var(--warning-soft);
+  --color-warning-line: var(--warning-line);
+  --color-placeholder: var(--placeholder);
+}
+
 :root {
+  color-scheme: light;
+  --canvas: #f5f3ee;
+  --surface: #ffffff;
+  --soft: #f5f5f4;
+  --hover: #e7e5e4;
+  --ink: #242725;
+  --muted: #57534e;
+  --subtle: #6b6661;
+  --line: #e7e5e4;
+  --line-strong: #d6d3d1;
+  --accent: #9a3412;
+  --accent-soft: #ffedd5;
+  --positive: #047857;
+  --danger: #b91c1c;
+  --danger-soft: #fef2f2;
+  --warning: #451a03;
+  --warning-soft: #fffbeb;
+  --warning-line: #fcd34d;
+  --placeholder: #e9ede5;
   font-family: "DM Sans", sans-serif;
-  color: #242725;
-  background: #f5f3ee;
+  color: var(--ink);
+  background: var(--canvas);
   font-synthesis: none;
   text-rendering: optimizeLegibility;
+}
+
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --canvas: #171b19;
+  --surface: #212724;
+  --soft: #2a312d;
+  --hover: #353f39;
+  --ink: #f3f2ed;
+  --muted: #c4cac4;
+  --subtle: #a6afa7;
+  --line: #3b453e;
+  --line-strong: #627066;
+  --accent: #ffb38c;
+  --accent-soft: #482d1e;
+  --positive: #6ee7b7;
+  --danger: #fca5a5;
+  --danger-soft: #432627;
+  --warning: #fde68a;
+  --warning-soft: #352e1c;
+  --warning-line: #927a38;
+  --placeholder: #2c3830;
 }
 
 body {
@@ -35,6 +97,6 @@ textarea {
 }
 
 :focus-visible {
-  outline: 3px solid #d9480f;
+  outline: 3px solid var(--accent);
   outline-offset: 4px;
 }
